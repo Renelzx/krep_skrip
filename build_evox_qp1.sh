@@ -9,6 +9,7 @@ device/asus/sdm660-common
 device/asus/X01BD
 kernel/asus/sdm660
 out/target/product/X01BD
+external/chromium-webview
 )
 
 rm -rf "${remove_lists[@]}"
