@@ -15,7 +15,7 @@ external/chromium-webview
 rm -rf "${remove_lists[@]}"
 
 # init repo
-repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/rsuplaygrnd/infinity_manifest.git -b 16 -g default,-mips,-darwin,-notdefault
+repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectInfinity-X/manifest.git -b 16 -g default,-mips,-darwin,-notdefault
 
 # clone local manifests
 git clone https://github.com/rsuplaygrnd/local_manifest.git --depth 1 -b X01BD-16.0_Infinity_X .repo/local_manifests
@@ -37,7 +37,7 @@ export TZ="Asia/Jakarta"
 source build/envsetup.sh
 
 # Build the ROM
-lunch infinity_X01BD-user
+lunch infinity_X01BD-userdebug
 make installclean
 m bacon
 
