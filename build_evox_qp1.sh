@@ -10,6 +10,12 @@ device/asus/X01BD
 kernel/asus/sdm660
 out/target/product/X01BD
 external/chromium-webview
+external/rust
+vendor/extras
+vendor/addons
+packages/modules/Nfc
+packages/apps/Nfc
+system/nfc
 )
 
 rm -rf "${remove_lists[@]}"
