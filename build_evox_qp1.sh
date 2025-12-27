@@ -7,14 +7,7 @@ device/samsung/universal9611-common
 device/samsung/a51
 kernel/samsung/universal9611
 out/target/product/a51
-external/chromium-webview
-external/rust
 vendor/samsung/a51
-vendor/extras
-vendor/addons
-packages/modules/Nfc
-packages/apps/Nfc
-system/nfc
 )
 
 rm -rf "${remove_lists[@]}"
