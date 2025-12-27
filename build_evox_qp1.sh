@@ -23,7 +23,7 @@ rm -rf "${remove_lists[@]}"
 repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/Evolution-X/manifest.git -b bq1 -g default,-mips,-darwin,-notdefault
 
 # clone local manifests
-git clone https://github.com/Renelzx/local_manifest --depth 1 -b bp3a-evox .repo/local_manifests
+git clone https://github.com/Renelzx/local_manifest --depth 1 -b a51_16.0_EvoX .repo/local_manifests
 
 # repo sync
 [ -f /usr/bin/resync ] && /usr/bin/resync || /opt/crave/resync.sh
