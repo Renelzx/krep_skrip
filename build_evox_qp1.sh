@@ -27,7 +27,6 @@ git clone https://github.com/Renelzx/local_manifest --depth 1 -b bp3a-evox .repo
 
 # repo sync
 [ -f /usr/bin/resync ] && /usr/bin/resync || /opt/crave/resync.sh
-fi
 
 # Set up build environment
 export BUILD_USERNAME=renelzx 
