@@ -97,10 +97,10 @@ set -e
 echo ">>> [7/8] Memilih Target (Lunch)..."
 # Prioritaskan evolution_a51
 if [[ " $(lunch --print) " =~ " evolution_a51 " ]]; then
-    lunch evolution_a51-ap3a-userdebug
+    lunch evolution_a51-bp4a-userdebug
 elif [[ " $(lunch --print) " =~ " lineage_a51 " ]]; then
     echo "   ! Target Evolution tidak ditemukan, menggunakan Lineage sebagai fallback..."
-    lunch lineage_a51-ap3a-userdebug
+    lunch lineage_a51-bp4a-userdebug
 else
     # Hard fallback
     lunch evolution_a51-userdebug
