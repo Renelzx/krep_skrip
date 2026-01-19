@@ -27,16 +27,19 @@ echo ">>> Starting Repo Sync..."
 [ -f /usr/bin/resync ] && /usr/bin/resync || /opt/crave/resync.sh
 
 echo ">>> Fixing patch..."
-# Fix: hardware/samsung_slsi/libbt error "could not import blueprint"
+# Fix 1: libbt blueprint error
 LIBBT_BP="hardware/samsung_slsi/libbt/Android.bp"
 if [ -f "$LIBBT_BP" ]; then
-    echo "  > Patching $LIBBT_BP..."
-    # Menambahkan bootstrap: true jika belum ada
-    if ! grep -q "bootstrap: true" "$LIBBT_BP"; then
-        sed -i 's/name: "libbt_vendor",/name: "libbt_vendor",\n    bootstrap: true,/g' "$LIBBT_BP"
-    fi
-else
-    echo "  ! Warning: $LIBBT_BP Tidak ditemukan. Mungkin sudah dihapus atau path berbeda."
+    echo "   > Patching libbt..."
+    grep -q "bootstrap: true" "$LIBBT_BP" || sed -i 's/name: "libbt_vendor",/name: "libbt_vendor",\n    bootstrap: true,/g' "$LIBBT_BP"
+fi
+
+# Fix 2: Cek fsconfig_dynamic.mk
+FS_CONFIG="device/samsung/universal9611-common/fsconfig_dynamic.mk"
+if [ ! -f "$FS_CONFIG" ]; then
+    echo "   > [WARNING] fsconfig_dynamic.mk hilang! Membuat file dummy untuk mencegah error..."
+    touch "$FS_CONFIG"
+    echo "# Dummy fsconfig" > "$FS_CONFIG"
 fi
 
 # Set up build environment
