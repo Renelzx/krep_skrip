@@ -29,10 +29,6 @@ mkdir -p .repo/local_manifests
 # Baris di bawah ini opsional jika Anda sudah menaruh file XML secara manual:
 # git clone https://github.com/Renelzx/local_manifest --depth 1 -b a51_16.0_EvoX .repo/local_manifests
 
-# HAPUS PRIVATE KEYS (Pencegah Error Sync "Auth Failed")
-echo "   > Menghapus entri private keys..."
-find .repo/local_manifests -name "*.xml" -type f -exec sed -i '/lineage-priv/d' {} +
-
 # 4. REPO SYNC
 echo ">>> [4/8] Sinkronisasi Repo..."
 # Menggunakan --force-sync untuk menimpa perubahan lokal yang rusak
