@@ -1,4 +1,9 @@
-echo ">>> Starting Cleanup..."
+echo " ____ _____  _    ____ _____ ___ _   _  ____ "
+echo "/ ___|_   _|/ \  |  _ \_   _|_ _| \ | |/ ___|"
+echo "\___ \ | | / _ \ | |_) || |  | ||  \| | |  _ "
+echo " ___) || |/ ___ \|  _ < | |  | || |\  | |_| |"
+echo "|____/ |_/_/   \_\_| \_\|_| |___|_| \_|\____|"
+
 # cleanup
 remove_lists=(
 .repo/local_manifests
@@ -25,22 +30,6 @@ git clone https://github.com/Renelzx/local_manifest --depth 1 -b a51_16.0_EvoX .
 # repo sync
 echo ">>> Starting Repo Sync..."
 [ -f /usr/bin/resync ] && /usr/bin/resync || /opt/crave/resync.sh
-
-echo ">>> Fixing patch..."
-# Fix 1: libbt blueprint error
-LIBBT_BP="hardware/samsung_slsi/libbt/Android.bp"
-if [ -f "$LIBBT_BP" ]; then
-    echo "   > Patching libbt..."
-    grep -q "bootstrap: true" "$LIBBT_BP" || sed -i 's/name: "libbt_vendor",/name: "libbt_vendor",\n    bootstrap: true,/g' "$LIBBT_BP"
-fi
-
-# Fix 2: Cek fsconfig_dynamic.mk
-FS_CONFIG="device/samsung/universal9611-common/fsconfig_dynamic.mk"
-if [ ! -f "$FS_CONFIG" ]; then
-    echo "   > [WARNING] fsconfig_dynamic.mk hilang! Membuat file dummy untuk mencegah error..."
-    touch "$FS_CONFIG"
-    echo "# Dummy fsconfig" > "$FS_CONFIG"
-fi
 
 # Set up build environment
 echo ">>> Setup Environment..."
