@@ -39,7 +39,6 @@ source build/envsetup.sh
 
 # 6. Build the ROM
 echo ">>> Starting Build for Emerald..."
-# Menggunakan 'evolution_emerald' karena biasanya EvoX pake prefix nama ROM-nya
 lunch lineage_emerald-userdebug
 m evolution
 
