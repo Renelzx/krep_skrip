@@ -43,7 +43,7 @@ source build/envsetup.sh
 # Build the ROM
 echo ">>> Starting Build..."
 lunch lineage_a51-bp4a-userdebug
-make installclean
+#make installclean
 m evolution
 
 [ -d out ] && ls out/target/product/a51
