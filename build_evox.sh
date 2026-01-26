@@ -36,8 +36,6 @@ echo ">>> Setup Environment..."
 export BUILD_USERNAME=renelzx 
 export BUILD_HOSTNAME=nobody 
 export TZ="Asia/Jakarta"
-export USE_CCACHE=1
-export CCACHE_EXEC=/usr/bin/ccache
 source build/envsetup.sh
 
 # Build the ROM
