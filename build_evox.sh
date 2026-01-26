@@ -21,7 +21,7 @@ rm -rf "${remove_lists[@]}"
 
 # init repo
 echo ">>> Starting Initializing Repo..."
-repo init -u https://github.com/Evolution-X/manifest -b bq2 --git-lfs --depth 1
+repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/Evolution-X/manifest -b bq2 --git-lfs --depth 1
 
 # clone local manifests
 echo ">>> Cloning Local Manifests..."
