@@ -1,55 +1,47 @@
-echo ">>> Starting Cleanup..."
-# cleanup
-remove_lists=(
-.repo/local_manifests
-prebuilts/clang/host/linux-x86
-device/samsung_slsi/sepolicy
-device/samsung/universal9611-common
-device/samsung/a51
-kernel/samsung/universal9611
-out/target/product/a51
-vendor/samsung/a51
-hardware/samsung_slsi/libbt
-)
+echo " ____ _____  _    ____ _____ ___ _   _  ____ "
+echo "/ ___|_   _|/ \  |  _ \_   _|_ _| \ | |/ ___|"
+echo "\___ \ | | / _ \ | |_) || |  | ||  \| | |  _ "
+echo " ___) || |/ ___ \|  _ < | |  | || |\  | |_| |"
+echo "|____/ |_/_/   \_\_| \_\|_| |___|_| \_|\____|"
 
+# 1. Cleanup - Hapus folder manifest lama dan sisa build sebelumnya
+echo ">>> Cleaning up old directories..."
+remove_lists=(
+  .repo/local_manifests
+  device/xiaomi/emerald
+  device/xiaomi/emerald-kernel
+  vendor/xiaomi/emerald
+  hardware/mediatek
+  hardware/xiaomi
+  out/target/product/emerald
+)
 rm -rf "${remove_lists[@]}"
 
-# init repo
+# 2. Initialize Repo (Evolution X)
 echo ">>> Starting Initializing Repo..."
-repo init -u https://github.com/Evolution-X/manifest -b bq2 --git-lfs --depth 1
+repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/Evolution-X/manifest.git -b bq2 -g default,-mips,-darwin,-notdefault
 
-# clone local manifests
-echo ">>> Cloning Local Manifests..."
-git clone https://github.com/Renelzx/local_manifest --depth 1 -b a51_16.0_EvoX .repo/local_manifests
+# 3. Clone Local Manifests
+# Pastikan lo udah bikin branch baru di repo local_manifest lo untuk emerald
+echo ">>> Cloning Local Manifests for Emerald..."
+git clone https://github.com/Renelzx/local_manifest.git --depth 1 -b emerald-16.0 .repo/local_manifests
 
-# repo sync
+# 4. Repo Sync
 echo ">>> Starting Repo Sync..."
 [ -f /usr/bin/resync ] && /usr/bin/resync || /opt/crave/resync.sh
 
-echo ">>> Fixing patch..."
-# Fix: hardware/samsung_slsi/libbt error "could not import blueprint"
-LIBBT_BP="hardware/samsung_slsi/libbt/Android.bp"
-if [ -f "$LIBBT_BP" ]; then
-    echo "  > Patching $LIBBT_BP..."
-    # Menambahkan bootstrap: true jika belum ada
-    if ! grep -q "bootstrap: true" "$LIBBT_BP"; then
-        sed -i 's/name: "libbt_vendor",/name: "libbt_vendor",\n    bootstrap: true,/g' "$LIBBT_BP"
-    fi
-else
-    echo "  ! Warning: $LIBBT_BP Tidak ditemukan. Mungkin sudah dihapus atau path berbeda."
-fi
-
-# Set up build environment
+# 5. Set up build environment
 echo ">>> Setup Environment..."
 export BUILD_USERNAME=renelzx 
 export BUILD_HOSTNAME=nobody 
 export TZ="Asia/Jakarta"
 source build/envsetup.sh
 
-# Build the ROM
-echo ">>> Starting Build..."
-lunch lineage_a51-bp3a-userdebug
-make installclean
+# 6. Build the ROM
+echo ">>> Starting Build for Emerald..."
+# Menggunakan 'evolution_emerald' karena biasanya EvoX pake prefix nama ROM-nya
+lunch lineage_emerald-userdebug
 m evolution
 
-[ -d out ] && ls out/target/product/a51
+# 7. Check output
+[ -d out ] && ls out/target/product/emerald
