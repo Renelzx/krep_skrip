@@ -39,7 +39,7 @@ source build/envsetup.sh
 
 # 6. Build the ROM
 echo ">>> Starting Build for Emerald..."
-lunch lineage_emerald-userdebug
+lunch lineage_emerald-bp4a-userdebug
 m evolution
 
 # 7. Check output
