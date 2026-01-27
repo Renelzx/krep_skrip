@@ -24,7 +24,7 @@ repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/Evolution-X
 # 3. Clone Local Manifests
 # Pastikan lo udah bikin branch baru di repo local_manifest lo untuk emerald
 echo ">>> Cloning Local Manifests for Emerald..."
-git clone https://github.com/Renelzx/local_manifest.git --depth 1 -b emerald-16.0 .repo/local_manifests
+git clone https://github.com/rsuplaygrnd/local_manifest.git --depth 1 -b emerald-bp1 .repo/local_manifests
 
 # 4. Repo Sync
 echo ">>> Starting Repo Sync..."
