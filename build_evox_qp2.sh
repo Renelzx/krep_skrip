@@ -25,7 +25,7 @@ repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/Evolution-X
 
 # clone local manifests
 echo ">>> Cloning Local Manifests..."
-git clone https://github.com/Renelzx/local_manifest.git --depth 1 -b a51_16.0_EvoX .repo/local_manifests
+git clone https://github.com/Renelzx/local_manifest.git --depth 1 -b exynos9611-16.0_EvoX .repo/local_manifests
 
 # repo sync
 echo ">>> Starting Repo Sync..."
