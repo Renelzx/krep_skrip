@@ -4,7 +4,7 @@ echo "\___ \ | | / _ \ | |_) || |  | ||  \| | |  _ "
 echo " ___) || |/ ___ \|  _ < | |  | || |\  | |_| |"
 echo "|____/ |_/_/   \_\_| \_\|_| |___|_| \_|\____|"
 
-# 1. Cleanup - Hapus folder manifest lama dan sisa build sebelumnya
+# 1. Cleanup
 echo ">>> Cleaning up old directories..."
 remove_lists=(
   .repo/local_manifests
@@ -22,7 +22,6 @@ echo ">>> Starting Initializing Repo..."
 repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/Evolution-X/manifest.git -b bq2 -g default,-mips,-darwin,-notdefault
 
 # 3. Clone Local Manifests
-# Pastikan lo udah bikin branch baru di repo local_manifest lo untuk emerald
 echo ">>> Cloning Local Manifests for Emerald..."
 git clone https://github.com/rsuplaygrnd/local_manifest.git --depth 1 -b emerald-bp1 .repo/local_manifests
 
