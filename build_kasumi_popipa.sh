@@ -16,13 +16,13 @@ remove_lists=(
 )
 rm -rf "${remove_lists[@]}"
 
-# 2. Initialize Repo (Evolution X)
+# 2. Initialize Repo (Kasumi)
 echo ">>> Starting Initializing Repo..."
 repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/Evolution-X/manifest.git -b bq2 -g default,-mips,-darwin,-notdefault
 
 # 3. Clone Local Manifests
 echo ">>> Cloning Local Manifests for Beryllium..."
-git clone https://github.com/rsuplaygrnd/local_manifest.git --depth 1 -b emerald-bp1 .repo/local_manifests
+git clone https://github.com/Renelzx/local_manifest.git --depth 1 -b beryllium_18.1 .repo/local_manifests
 
 # 4. Repo Sync
 echo ">>> Starting Repo Sync..."
@@ -36,9 +36,9 @@ export TZ="Asia/Jakarta"
 source build/envsetup.sh
 
 # 6. Build the ROM
-echo ">>> Starting Build for Emerald..."
-lunch lineage_emerald-bp4a-userdebug
-m evolution
+echo ">>> Starting Build for Beryllium..."
+lunch kasumi_beryllium-userdebug
+m bandori
 
 # 7. Check output
-[ -d out ] && ls out/target/product/emerald
+[ -d out ] && ls out/target/product/beryllium
