@@ -37,8 +37,8 @@ source build/envsetup.sh
 
 # 6. Build the ROM
 echo ">>> Starting Build for Beryllium..."
-lunch kasumi_beryllium-userdebug
-mka bandori
+play live kasumi_beryllium-userdebug
+#mka bandori
 
 # 7. Check output
 [ -d out ] && ls out/target/product/beryllium
