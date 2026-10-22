@@ -4,7 +4,7 @@ set -e
 
 echo "================================================="
 echo ">>> GKI 6.1 KERNEL BUILD SCRIPT FOR MEIZU 21"
-echo ">>> Features: ReSukiSU + SuSFS (asanagi branch)"
+echo ">>> Features: FinaSU + SuSFS (asanagi branch)"
 echo "================================================="
 
 echo ">>> [1/7] Membersihkan Environment..."
