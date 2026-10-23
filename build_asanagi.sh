@@ -19,6 +19,7 @@ echo ">>> [3/7] Sinkronisasi Toolchain & Prebuilts..."
 /opt/crave/resync.sh || repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags
 
 echo ">>> [4/7] Mengambil Source Kernel Meizu (branch asanagi)..."
+rm -rf common
 git clone --depth=1 https://github.com/Renelzx/kernel_meizu_m2461 -b asanagi common
 
 echo ">>> [5/7] Menjalankan Pre-build Checks..."
