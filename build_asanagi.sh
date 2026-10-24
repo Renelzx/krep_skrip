@@ -8,9 +8,8 @@ echo ">>> Features: FinaSU + SuSFS (asanagi branch)"
 echo "================================================="
 
 echo ">>> [1/7] Membersihkan Environment..."
-rm -rf out/
+rm -rf out/dist out/*.zip
 rm -rf AnyKernel3/
-rm -rf common
 
 echo ">>> [2/7] Inisialisasi Repo ACK GKI 6.1..."
 repo init -u https://android.googlesource.com/kernel/manifest -b common-android14-6.1 --depth=1
@@ -23,7 +22,6 @@ rm -rf common
 git clone --depth=1 https://github.com/Renelzx/kernel_meizu_m2461 -b asanagi common
 
 echo ">>> [5/7] Menjalankan Pre-build Checks..."
-rm -f common/android/abi_gki_protected_exports_*
 
 export TZ="Asia/Jakarta"
 
@@ -45,7 +43,7 @@ if [ -f "out/dist/Image" ]; then
     sed -i 's/is_slot_device=0/is_slot_device=1/g' AnyKernel3/anykernel.sh
     
     cd AnyKernel3
-    ZIP_NAME="Kernel_Meizu21_GKI6.1_ReSukiSU_SuSFS_$(date +%Y%m%d_%H%M).zip"
+    ZIP_NAME="Kernel_Meizu21_GKI6.1_FinaSU_SuSFS_$(date +%Y%m%d_%H%M).zip"
     zip -r9 "../out/${ZIP_NAME}" * -x .git README.md *placeholder
     cd ..
     
