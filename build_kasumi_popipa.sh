@@ -8,11 +8,11 @@ echo "|____/ |_/_/   \_\_| \_\|_| |___|_| \_|\____|"
 echo ">>> Cleaning up old directories..."
 remove_lists=(
   .repo/local_manifests
-  device/xiaomi/beryllium
-  kernel/xiaomi/beryllium
-  vendor/xiaomi/beryllium
+  device/xiaomi/davinci
+  kernel/xiaomi/davinci
+  vendor/xiaomi/davinci
   hardware/xiaomi
-  out/target/product/beryllium
+  out/target/product/davinci
 )
 rm -rf "${remove_lists[@]}"
 
@@ -22,7 +22,7 @@ repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectKasu
 
 # 3. Clone Local Manifests
 echo ">>> Cloning Local Manifests for Beryllium..."
-git clone https://github.com/Renelzx/local_manifest.git --depth 1 -b beryllium-18.1 .repo/local_manifests
+git clone https://github.com/Renelzx/local_manifest.git --depth 1 -b davinci-18.1 .repo/local_manifests
 
 # 4. Repo Sync
 echo ">>> Starting Repo Sync..."
