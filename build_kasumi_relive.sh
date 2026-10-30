@@ -9,8 +9,8 @@ echo ">>> Cleaning up old directories..."
 remove_lists=(
   .repo/local_manifests
   device/xiaomi/davinci
-  kernel/xiaomi/davinci
-  vendor/xiaomi/davinci
+  kernel/xiaomi/sm6150
+  vendor/xiaomi/sm6150-common
   hardware/xiaomi
   out/target/product/davinci
 )
@@ -18,11 +18,11 @@ rm -rf "${remove_lists[@]}"
 
 # 2. Initialize Repo (Kasumi)
 echo ">>> Starting Initializing Repo..."
-repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/ProjectKasumi/manifest.git -b kasumi-v1 -g default,-mips,-darwin,-notdefault
+repo init --depth=1 --no-repo-verify --git-lfs -u https://github.com/Kasumi-reLive/manifest.git -b kasumi-v1 -g default,-mips,-darwin,-notdefault
 
 # 3. Clone Local Manifests
-echo ">>> Cloning Local Manifests for Beryllium..."
-git clone https://github.com/Renelzx/local_manifest.git --depth 1 -b davinci-18.1 .repo/local_manifests
+echo ">>> Cloning Local Manifests for Davinci..."
+git clone https://github.com/Renelzx/local_manifest.git --depth 1 -b davinci-11 .repo/local_manifests
 
 # 4. Repo Sync
 echo ">>> Starting Repo Sync..."
@@ -37,8 +37,8 @@ source build/envsetup.sh
 
 # 6. Build the ROM
 echo ">>> Starting Build for Beryllium..."
-play live kasumi_beryllium-userdebug
+play live kasumi_davinci-userdebug
 #mka bandori
 
 # 7. Check output
-[ -d out ] && ls out/target/product/beryllium
+[ -d out ] && ls out/target/product/davinci
