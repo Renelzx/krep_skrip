@@ -36,7 +36,7 @@ export TZ="Asia/Jakarta"
 source build/envsetup.sh
 
 # 6. Build the ROM
-echo ">>> Starting Build for Beryllium..."
+echo ">>> Starting Build..."
 play live kasumi_davinci-userdebug
 #mka bandori
 
